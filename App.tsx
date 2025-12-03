@@ -1,45 +1,38 @@
-/**
- * Sample React Native App
- * https://github.com/facebook/react-native
- *
- * @format
- */
+import { Text, View, Image, TouchableOpacity, Alert, StyleSheet, useColorScheme, ScrollView } from 'react-native';
+import { SafeAreaView } from 'react-native-safe-area-context';
+import New from './components/New';
+import FlatCard from './components/FlatCard';
+import Card from './components/Card';
+import ActionCard from './components/ActionCard';
+import ContactList from './components/ContactList';
 
-import { NewAppScreen } from '@react-native/new-app-screen';
-import { StatusBar, StyleSheet, useColorScheme, View } from 'react-native';
-import {
-  SafeAreaProvider,
-  useSafeAreaInsets,
-} from 'react-native-safe-area-context';
-
-function App() {
-  const isDarkMode = useColorScheme() === 'dark';
-
+const App = () => {
+  const theme = useColorScheme() === 'dark';
   return (
-    <SafeAreaProvider>
-      <StatusBar barStyle={isDarkMode ? 'light-content' : 'dark-content'} />
-      <AppContent />
-    </SafeAreaProvider>
-  );
-}
+    <SafeAreaView style={styles.container}>
+      <ScrollView>
 
-function AppContent() {
-  const safeAreaInsets = useSafeAreaInsets();
+        <New />
 
-  return (
-    <View style={styles.container}>
-      <NewAppScreen
-        templateFileName="App.tsx"
-        safeAreaInsets={safeAreaInsets}
-      />
-    </View>
+        <FlatCard />
+
+        <Card />
+
+        <ActionCard />
+
+        <ContactList />
+      </ScrollView>
+    </SafeAreaView>
   );
 }
 
 const styles = StyleSheet.create({
   container: {
-    flex: 1,
+    backgroundColor: "white",
+    paddingVertical: 2,
+    paddingHorizontal: 10,
+    gap: 10,
+    height: "100%",
   },
-});
-
-export default App;
+})
+export default App
